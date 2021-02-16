@@ -31,6 +31,20 @@ public class Main {
         //fill array with my values
         fillWithMyValues(arr);
 
+        double x = (arr[0][0] * (arr[1][1] * arr[2][2]
+                - arr[1][2] * arr[2][1]));
+        double y = (arr[0][1] * (arr[1][0] * arr[2][2]
+                - arr[1][2] * arr[2][0]));
+        double z = (arr[0][2] * (arr[1][0] * arr[2][1]
+                - arr[1][1] * arr[2][0]));
+        double determinant = x - y + z;
+        System.out.println("The modulus of the given arr is " + determinant);
+        if (determinant <= 0) {
+            System.exit(1);
+        } else {
+            System.out.println(determinant + " != 0");
+        }
+
         for (int i = 0; i < 3; i++) {
             System.arraycopy(arr[i], 0, mainArr[i], 0, 4);
         }
@@ -43,7 +57,7 @@ public class Main {
         }
         //divide first line on arr 0 0
         List<Double> temp = new ArrayList<>();
-        if(arr[0][0]!=0) {
+        if (arr[0][0] != 0) {
             for (int i = 0; i < 4; i++) {
                 temp.add(tempLines.get(i) / arr[0][0]);
             }
@@ -103,7 +117,7 @@ public class Main {
         List<Double> secondLine = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
             secondLine.add(arr[1][i]);
-            if (arr[1][1]!=0) {
+            if (arr[1][1] != 0) {
                 secondLine.set(i, secondLine.get(i) / arr[1][1]);
             }
         }
@@ -228,7 +242,7 @@ public class Main {
         System.out.printf("%.2f%n", temp);
     }
 
-    public static void fillWithMyValues(double [][]arr){
+    public static void fillWithMyValues(double[][] arr) {
         arr[0][0] = 2.70;
         arr[0][1] = 2.61;
         arr[0][2] = 3.24;
